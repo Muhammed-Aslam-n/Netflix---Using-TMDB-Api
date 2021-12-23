@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/api_service/dio_service.dart';
 import 'package:netflix/constants/constants.dart';
 import 'package:netflix/models/model_popular_movies.dart';
-import 'package:netflix/screen/screen_details.dart';
+import 'package:netflix/screen/screen_home/screen_details.dart';
 import 'package:netflix/widgets/widgets.dart';
 
 class SearchContent extends StatefulWidget {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/constants/constants.dart';
-import 'package:netflix/screen/screen_popular_movies.dart';
-import 'package:netflix/screen/screen_search.dart';
-import 'package:netflix/screen/screen_top_rated_movies.dart';
-import 'package:netflix/screen/screen_top_tvshows.dart';
+import 'package:netflix/external_icons/search_icon_external.dart';
+import 'package:netflix/screen/screen_home/screen_popular_movies.dart';
+import 'package:netflix/screen/screen_home/screen_search.dart';
+import 'package:netflix/screen/screen_home/screen_top_rated_movies.dart';
+import 'package:netflix/screen/screen_home/screen_top_tvshows.dart';
 import 'package:netflix/widgets/widgets.dart';
 
 class MainScreen extends StatelessWidget {
@@ -11,11 +12,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        bottomNavigationBar: bottomNavBar(),
-        body: CustomScrollView(
+    return  CustomScrollView(
           slivers: [
             SliverAppBar(
               backgroundColor: Colors.transparent,
@@ -46,8 +43,8 @@ class MainScreen extends StatelessWidget {
                             onPressed: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchContent()));
                             },
-                            icon: const Icon(
-                              Icons.search_sharp,
+                            icon:  const Icon(
+                              SearchIconExternal.search_1,
                               size: 28,
                             ),
                           ),
@@ -69,21 +66,23 @@ class MainScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      commonText(
-                          text: "TV Shows",
-                          color: Colors.white,
-                          weight: FontWeight.w400),
-                      commonText(
-                          text: "Movies",
-                          color: Colors.white,
-                          weight: FontWeight.w400),
+                      commonHeadText(
+                          text: "TV Shows",),
+                      commonHeadText(
+                          text: "Movies"),
                       Row(
                         children: [
-                          commonText(
-                              text: "Categories",
-                              color: Colors.white,
-                              weight: FontWeight.w400),
-                          const Icon(Icons.arrow_drop_down)
+                          commonHeadText(
+                              text: "Categories"),
+                          IconButton(onPressed: (){
+                            showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.black.withOpacity(0.6),
+                                isDismissible: false,
+                                enableDrag: false,
+                                context: context, builder: (context) => buildCategories(context));
+                          },
+                              icon: const Icon(Icons.arrow_drop_down)),
                         ],
                       ),
                     ],
@@ -96,36 +95,32 @@ class MainScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   sizedh2,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      sizedw1,
-                      commonText(text: "\tSlick", weight: FontWeight.w400),
-                      commonText(
-                        text: "•",
-                        color: Colors.white38,
-                      ),
-                      commonText(text: "\tDrama\t", weight: FontWeight.w400),
-                      commonText(
-                        text: "•",
-                        color: Colors.white38,
-                      ),
-                      commonText(
-                          text: "\tCon Game\t", weight: FontWeight.w400),
-                      commonText(
-                        text: "•",
-                        color: Colors.white38,
-                      ),
-                      commonText(
-                          text: "\tVintage Crime\t", weight: FontWeight.w400),
-                      commonText(
-                        text: "•",
-                        color: Colors.white38,
-                      ),
-                      commonText(
-                          text: "\tOn The Run\t", weight: FontWeight.w400),
-                      sizedw1
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        sizedw1,
+                        commonText(text: "\tSlick\t",family: 'poppins-el'),
+                        commonText(
+                          text: "•",
+                          color: Colors.white38,
+                        ),
+                        commonText(text: "\tDrama\t"),
+                        commonText(
+                          text: "•",
+                          color: Colors.white38,
+                        ),
+                        commonText(
+                            text: "\tCon Game\t"),
+                        commonText(
+                          text: "•",
+                          color: Colors.white38,
+                        ),
+                        commonText(
+                            text: "\tVintage Crime\t"),
+                      ],
+                    ),
                   ),
                   sizedh2,
                   Row(
@@ -142,7 +137,7 @@ class MainScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             const Icon(Icons.play_arrow, color: Colors.black),
-                            commonText(text: "Play", color: Colors.black),
+                            commonHeadText(text: "Play", color: Colors.black,weight: FontWeight.w800),
                           ],
                         ),
                       ),
@@ -151,18 +146,17 @@ class MainScreen extends StatelessWidget {
                     ],
                   ),
                   sizedh2,
-                  commonText(text: "\t\t\t\tPopular Movies"),
+                  commonHeadText(text: "\t\t\t\tTop on Netflix",),
                   sizedh2,
                   const PopularMovies(),
                   sizedh2,
-                  commonText(text: "\t\t\t\tTop Rated Films"),
+                  commonHeadText(text: "\t\t\t\tTrending Movies"),
                   sizedh2,
                   const TopRatedMovies(),
                   sizedh2,
-                  commonText(text: "\t\t\t\tTV Shows"),
+                  commonHeadText(text: "\t\t\t\tTop 10 Rated in India"),
                   sizedh2,
                   const TopTvShows(),
-
                   const SizedBox(
                     height: 40,
                   )
@@ -171,8 +165,6 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
     );
   }
 }

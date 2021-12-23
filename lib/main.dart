@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screen/screen_main.dart';
-
+import 'package:netflix/screen/home.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(brightness: Brightness.dark,
           primaryColor: Colors.black
       ),
-      home: const MainScreen(),
+      home: const Home(),
     );
   }
 }

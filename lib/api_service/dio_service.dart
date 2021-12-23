@@ -21,7 +21,6 @@ class DioService{
       debugPrint(dioError.message.toString());
     }
   }
-
  Future<List<PopularMovieResult>?> fetchTopRatedMovies() async{
     try{
       Response response = await _dio!.get(urlTopRatedMovie);

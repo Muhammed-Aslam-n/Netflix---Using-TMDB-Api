@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/constants/constants.dart';
-import 'package:netflix/screen/screen_popular_movies.dart';
+import 'package:netflix/screen/screen_home/screen_popular_movies.dart';
 import 'package:netflix/widgets/widgets.dart';
 import 'package:fluttericon/octicons_icons.dart';
 

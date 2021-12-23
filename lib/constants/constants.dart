@@ -29,3 +29,6 @@ const sizedw1 = SizedBox(
 const sizedw2 = SizedBox(
   width: 20,
 );
+
+const downloadHighlight = "We'll download a personalized selection of movies and shows for you, so there is something to warch on your phone";
+
