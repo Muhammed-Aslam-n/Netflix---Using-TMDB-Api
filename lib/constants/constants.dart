@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 
-const String _apiKey = 'd5cd849e7b0423b9843166aee15de456';
+const String _apiKey = '';
 
 const String urlPopularMovie ="https://api.themoviedb.org/3/movie/popular?api_key=$_apiKey&language=en-US&page=1";
 const String urlTopRatedMovie ="https://api.themoviedb.org/3/movie/top_rated?api_key=$_apiKey&language=en-US&page=1";
